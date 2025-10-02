@@ -22,8 +22,8 @@ AddonDefinition *GetAddonDef() {
       .Load = AddonLoad,
       .Unload = AddonUnload,
       .Flags = EAddonFlags_None,
-      // .Provider = EUpdateProvider_GitHub,
-      // .UpdateLink = "https://github.com/jsantorek/GW2-" ADDON_NAME,
+      .Provider = EUpdateProvider_GitHub,
+      .UpdateLink = "https://github.com/jsantorek/GW2-" ADDON_NAME,
   };
   return &def;
 }
