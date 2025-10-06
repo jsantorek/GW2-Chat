@@ -28,22 +28,36 @@ typedef enum {
 
   Guild_IsRepresented = 1 << 0,
 
-  Local_IsFromCommander = 1 << 1,
   Local_IsFromMentor = 1 << 2,
 
-  Map_IsFromCommander = Local_IsFromCommander,
   Map_IsFromMentor = Local_IsFromMentor,
 
-  Squad_IsFromCommander = Local_IsFromCommander,
+  Squad_IsFromCommander = 1 << 1,
+
+  Party_IsFromCommander = Squad_IsFromCommander,
 
   SquadMessage_IsBroadcast = 1 << 3,
 
   Whisper_IsFromMe = 1 << 4,
 } MetadataFlags;
 typedef enum {
+  EternalBattlegrounds = 38,
+  GreenAlpineBorderlands = 95,
+  BlueAlpineBorderlands = 96,
+  ObsidianSanctum = 899,
+  EdgeOfTheMists = 968,
+  RedDesertBorderlands = 1099,
+  ArmisitceBastion = 1315
+} MapId;
+typedef enum {
+  Bless = 0x81213e71,
   Beckon = 0x81011505,
   Dance = 0x81074004,
   Sit = 0x810E0C2B,
+  Yes = 0x810d23c5,
+  No = 0x45c9010d,
+  Cower = 0x81067f49,
+  Laugh = 0x45cf010d,
 } EmoteType;
 typedef char *StringUTF8; // null-terminated, UTF-8 encoded string
 typedef struct {
@@ -65,7 +79,7 @@ typedef struct {
 } GenericMessage;
 typedef struct {
   GenericMessage Base; // c-style inheritance
-  uint32_t MapId;
+  MapId Map;
 } WvWTeamMessage;
 typedef struct {
   StringUTF8 CharacterName;
