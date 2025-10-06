@@ -1,6 +1,6 @@
 #include "Configurator.hpp"
 #include "Handler.hpp"
-#include <Chat.hpp>
+#include <Chat.h>
 #include <Nexus.h>
 #include <exception>
 #include <memory>
@@ -12,13 +12,14 @@ extern "C" __declspec(dllexport) AddonDefinition *GetAddonDef();
 
 AddonDefinition *GetAddonDef() {
   static AddonDefinition def{
-      .Signature = GW2::Chat::Signature,
+      .Signature = GW2_CHAT_SIGNATURE,
       .APIVersion = NEXUS_API_VERSION,
       .Name = "Events: " ADDON_NAME,
       .Version = AddonVersion{ADDON_VERSION_MAJOR, ADDON_VERSION_MINOR,
                               ADDON_VERSION_PATCH, ADDON_VERSION_REVISION},
       .Author = "Vonsh.1427",
-      .Description = "Provides game's chat messages as events for other addons.",
+      .Description =
+          "Provides game's chat messages as events for other addons.",
       .Load = AddonLoad,
       .Unload = AddonUnload,
       .Flags = EAddonFlags_None,
